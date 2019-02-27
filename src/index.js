@@ -1,23 +1,24 @@
 import readlineSync from 'readline-sync';
 
-const startGame = () => {
-  console.log('Welcome to the Brain Games!');
+const initialGreeting = (gameRule = '') => {
+  console.log(`Welcome to the Brain Games!\n${gameRule}`);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
+  return userName;
 };
 
+const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
+const isEven = number => (number % 2 === 0 ? 'yes' : 'no');
+
 const checkOnEven = () => {
-  console.log('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".\n');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
+  const userName = initialGreeting('Answer "yes" if number even otherwise answer "no".\n');
+  const gameRounds = 3;
 
-  const numbersToCheck = [15, 6, 7];
-  const isEven = number => (number % 2 === 0 ? 'yes' : 'no');
+  for (let i = 0; i < gameRounds; i += 1) {
+    const randomNumber = getRandomInt(0, 100);
+    const answer = readlineSync.question(`Question: ${randomNumber}\nYour answer: `);
 
-  for (let i = 0; i < numbersToCheck.length; i += 1) {
-    const answer = readlineSync.question(`Question: ${numbersToCheck[i]}\nYour answer: `);
-
-    if (isEven(numbersToCheck[i]) !== answer) {
+    if (isEven(randomNumber) !== answer) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${isEven(answer)}".\nLet's try again, ${userName}!`);
       return;
     }
@@ -28,4 +29,4 @@ const checkOnEven = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export { startGame, checkOnEven };
+export { initialGreeting, checkOnEven };
