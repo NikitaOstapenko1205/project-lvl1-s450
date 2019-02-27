@@ -28,6 +28,13 @@ const getMathResult = (number1, number2, operator) => {
       return operatorStr;
   }
 };
+const getGcdResult = (number1, number2) => {
+  if (number2 === 0) {
+    return number1;
+  }
+
+  return getGcdResult(number2, number1 % number2);
+};
 
 export {
   readlineSync,
@@ -38,4 +45,5 @@ export {
   getRightAnswer,
   getMathResult,
   isEven,
+  getGcdResult,
 };
