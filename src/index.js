@@ -7,19 +7,22 @@ const initialGreeting = (gameRule = '') => {
   return userName;
 };
 
+const gameRounds = 3;
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
-const isEven = number => (number % 2 === 0 ? 'yes' : 'no');
+const isEven = number => (number % 2 === 0);
+const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
 const checkOnEven = () => {
   const userName = initialGreeting('Answer "yes" if number even otherwise answer "no".\n');
-  const gameRounds = 3;
 
   for (let i = 0; i < gameRounds; i += 1) {
     const randomNumber = getRandomInt(0, 100);
     const answer = readlineSync.question(`Question: ${randomNumber}\nYour answer: `);
+    const rightAnswer = getRightAnswer(randomNumber);
 
-    if (isEven(randomNumber) !== answer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${isEven(answer)}".\nLet's try again, ${userName}!`);
+    if (rightAnswer !== answer) {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
 
