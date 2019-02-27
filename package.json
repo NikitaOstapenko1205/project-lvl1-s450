@@ -1,10 +1,11 @@
 {
   "name": "hexlet_project_brain_games_nikita",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "first hexlet project",
   "main": "",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "files": [
     "dist"
