@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
-const initialGreeting = (gameRule = '') => {
-  console.log(`Welcome to the Brain Games!\n${gameRule}`);
+const initialGreeting = (gameMessage = '') => {
+  console.log(`Welcome to the Brain Games!\n${gameMessage}`);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   return userName;
@@ -9,27 +9,24 @@ const initialGreeting = (gameRule = '') => {
 
 const gameRounds = 3;
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  return operators[Math.floor(Math.random()*operators.length)];
+};
 const isEven = number => (number % 2 === 0);
 const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
-
-const checkOnEven = () => {
-  const userName = initialGreeting('Answer "yes" if number even otherwise answer "no".\n');
-
-  for (let i = 0; i < gameRounds; i += 1) {
-    const randomNumber = getRandomInt(0, 100);
-    const answer = readlineSync.question(`Question: ${randomNumber}\nYour answer: `);
-    const rightAnswer = getRightAnswer(randomNumber);
-
-    if (rightAnswer !== answer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-
-    console.log('Correct!');
+const getMathResult = (number1, number2, operator) => {
+  const operatorStr = String(operator);
+  switch (operatorStr) {
+    case '+':
+      return number1 + number2;
+    case '-': 
+      return number1 - number2;
+    case '*':
+      return number1 * number2;
+    default:
+      return operatorStr;
   }
-
-  console.log(`Congratulations, ${userName}!`);
 };
 
-export { initialGreeting, checkOnEven };
+export { readlineSync, initialGreeting, gameRounds, getRandomInt, getRandomOperator, getRightAnswer, getMathResult, isEven };
