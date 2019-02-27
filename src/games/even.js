@@ -1,4 +1,10 @@
-import { readlineSync, initialGreeting, gameRounds, getRandomInt, getRightAnswer } from '../index';
+import {
+  readlineSync,
+  initialGreeting,
+  gameRounds,
+  getRandomInt,
+  getRightAnswer,
+} from '../index';
 
 const checkOnEven = () => {
   const userName = initialGreeting('Answer "yes" if number even otherwise answer "no".\n');
@@ -20,4 +26,4 @@ const checkOnEven = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export { checkOnEven };
+export default checkOnEven;

@@ -1,4 +1,11 @@
-import { readlineSync, initialGreeting, gameRounds, getRandomInt, getRandomOperator, getMathResult } from '../index';
+import {
+  readlineSync,
+  initialGreeting,
+  gameRounds,
+  getRandomInt,
+  getRandomOperator,
+  getMathResult,
+} from '../index';
 
 const calculate = () => {
   const userName = initialGreeting('What is the result of the expression?\n');
@@ -22,4 +29,4 @@ const calculate = () => {
   console.log(`Congratulations, ${userName}!`);
 };
 
-export { calculate };
+export default calculate;

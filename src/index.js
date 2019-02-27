@@ -11,7 +11,7 @@ const gameRounds = 3;
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
 const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
-  return operators[Math.floor(Math.random()*operators.length)];
+  return operators[Math.floor(Math.random() * operators.length)];
 };
 const isEven = number => (number % 2 === 0);
 const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
@@ -20,7 +20,7 @@ const getMathResult = (number1, number2, operator) => {
   switch (operatorStr) {
     case '+':
       return number1 + number2;
-    case '-': 
+    case '-':
       return number1 - number2;
     case '*':
       return number1 * number2;
@@ -29,4 +29,13 @@ const getMathResult = (number1, number2, operator) => {
   }
 };
 
-export { readlineSync, initialGreeting, gameRounds, getRandomInt, getRandomOperator, getRightAnswer, getMathResult, isEven };
+export {
+  readlineSync,
+  initialGreeting,
+  gameRounds,
+  getRandomInt,
+  getRandomOperator,
+  getRightAnswer,
+  getMathResult,
+  isEven,
+};
