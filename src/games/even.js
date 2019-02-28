@@ -1,29 +1,19 @@
 import {
-  readlineSync,
-  initialGreeting,
-  gameRounds,
   getRandomInt,
-  getRightAnswer,
+  gameEngine,
 } from '../index';
 
-const checkOnEven = () => {
-  const userName = initialGreeting('Answer "yes" if number even otherwise answer "no".\n');
+const isEven = number => (number % 2 === 0);
+const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
+const roundQuestion = () => getRandomInt(0, 100);
 
-  for (let i = 0; i < gameRounds; i += 1) {
-    const randomNumber = getRandomInt(0, 100);
-    const answer = readlineSync.question(`Question: ${randomNumber}\nYour answer: `);
-    const rightAnswer = getRightAnswer(randomNumber);
+const questionAnswerGenerator = () => {
+  const question = roundQuestion();
+  const questionAnswer = [question, getRightAnswer(question)];
 
-    if (rightAnswer !== answer) {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n`);
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-
-    console.log('Correct!');
-  }
-
-  console.log(`Congratulations, ${userName}!`);
+  return questionAnswer;
 };
+
+const checkOnEven = () => gameEngine('Answer "yes" if number even otherwise answer "no".\n', questionAnswerGenerator);
 
 export default checkOnEven;

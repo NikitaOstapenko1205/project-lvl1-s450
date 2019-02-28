@@ -9,41 +9,29 @@ const initialGreeting = (gameMessage = '') => {
 
 const gameRounds = 3;
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
-const getRandomOperator = () => {
-  const operators = ['+', '-', '*'];
-  return operators[Math.floor(Math.random() * operators.length)];
-};
-const isEven = number => (number % 2 === 0);
-const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
-const getMathResult = (number1, number2, operator) => {
-  const operatorStr = String(operator);
-  switch (operatorStr) {
-    case '+':
-      return number1 + number2;
-    case '-':
-      return number1 - number2;
-    case '*':
-      return number1 * number2;
-    default:
-      return operatorStr;
-  }
-};
-const getGcdResult = (number1, number2) => {
-  if (number2 === 0) {
-    return number1;
+
+const gameEngine = (gameMessage, getQuetionAndAnswer) => {
+  const userName = initialGreeting(gameMessage);
+
+  for (let i = 0; i < gameRounds; i += 1) {
+    const questionAnswerPair = getQuetionAndAnswer();
+    const question = questionAnswerPair[0];
+    const rightAnswer = questionAnswerPair[1];
+    const answer = readlineSync.question(`Question: ${question}\nYour answer: `);
+
+    if (rightAnswer !== answer) {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${rightAnswer}".\n`);
+      console.log(`Let's try again, ${userName}!`);
+      return;
+    }
+
+    console.log('Correct!');
   }
 
-  return getGcdResult(number2, number1 % number2);
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export {
-  readlineSync,
-  initialGreeting,
-  gameRounds,
   getRandomInt,
-  getRandomOperator,
-  getRightAnswer,
-  getMathResult,
-  isEven,
-  getGcdResult,
+  gameEngine,
 };
