@@ -1,5 +1,5 @@
 import gameEngine from '../index';
-import getRandomInt from '../utils';
+import { getRandomInt } from '../utils';
 
 const gameMessage = 'Find the greatest common divisor of given numbers.';
 const getGcdResult = (number1, number2) => {

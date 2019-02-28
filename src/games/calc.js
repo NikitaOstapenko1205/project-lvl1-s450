@@ -1,5 +1,5 @@
 import gameEngine from '../index';
-import getRandomInt from '../utils';
+import { getRandomInt } from '../utils';
 
 const gameMessage = 'What is the result of the expression?';
 const getMathResult = (number1, number2, operator) => {

@@ -4,20 +4,34 @@
 [![Build Status](https://travis-ci.org/NikitaOstapenko1205/project-lvl1-s450.svg?branch=master)](https://travis-ci.org/NikitaOstapenko1205/project-lvl1-s450)
 
 
+
 # brain-even
 [![asciicast](https://asciinema.org/a/Qrv7kaKYvn3UAMAn9qdH6vMnA.svg)](https://asciinema.org/a/Qrv7kaKYvn3UAMAn9qdH6vMnA)
 
-=========================================================================================================================
+
+====================================================================
+
 
 # brain-calc
 [![asciicast](https://asciinema.org/a/Cl6C6HLuNUP2YEXqhOgLc7Xia.svg)](https://asciinema.org/a/Cl6C6HLuNUP2YEXqhOgLc7Xia)
 
-=========================================================================================================================
+
+====================================================================
+
 
 # brain-gcd
 [![asciicast](https://asciinema.org/a/H4aHxxcdjiOdEu6WtDhN0IMDI.svg)](https://asciinema.org/a/H4aHxxcdjiOdEu6WtDhN0IMDI)
 
-=========================================================================================================================
+
+====================================================================
+
 
 # brain-progression
 [![asciicast](https://asciinema.org/a/ebWFZwoiBGyFSXNc4JCbXZqwl.svg)](https://asciinema.org/a/ebWFZwoiBGyFSXNc4JCbXZqwl)
+
+
+====================================================================
+
+
+# brain-prime
+[![asciicast](https://asciinema.org/a/oXhh7WGWZFzsSlQiHQcEfBIty.svg)](https://asciinema.org/a/oXhh7WGWZFzsSlQiHQcEfBIty)

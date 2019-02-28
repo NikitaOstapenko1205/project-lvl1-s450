@@ -1,4 +1,5 @@
 
 const getRandomInt = (min, max) => (Math.floor(Math.random() * (max - min)) + min);
+const getRightAnswer = number => checkFunction => (checkFunction(number) ? 'yes' : 'no');
 
-export default getRandomInt;
+export { getRandomInt, getRightAnswer };

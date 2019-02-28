@@ -1,5 +1,5 @@
 import gameEngine from '../index';
-import getRandomInt from '../utils';
+import { getRandomInt } from '../utils';
 
 const gameMessage = 'What number is missing in the progression?';
 const progressionLimit = 10;
