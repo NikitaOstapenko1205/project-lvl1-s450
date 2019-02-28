@@ -1,8 +1,7 @@
-import {
-  getRandomInt,
-  gameEngine,
-} from '../index';
+import gameEngine from '../index';
+import getRandomInt from '../utils';
 
+const gameMessage = 'What is the result of the expression?';
 const getMathResult = (number1, number2, operator) => {
   const operatorStr = String(operator);
   switch (operatorStr) {
@@ -23,14 +22,14 @@ const getRandomOperator = () => {
 };
 
 const questionAnswerGenerator = () => {
-  const question1 = getRandomInt(0, 100);
-  const question2 = getRandomInt(0, 100);
+  const number1 = getRandomInt(0, 100);
+  const number2 = getRandomInt(0, 100);
   const questionOperator = getRandomOperator();
-  const questionAnswer = [`${question1} ${questionOperator} ${question2}`, String(getMathResult(question1, question2, questionOperator))];
+  const question = `${number1} ${questionOperator} ${number2}`;
+  const result = String(getMathResult(number1, number2, questionOperator));
+  const questionAnswer = [question, result];
 
   return questionAnswer;
 };
 
-const calculate = () => gameEngine('What is the result of the expression?\n', questionAnswerGenerator);
-
-export default calculate;
+export default () => gameEngine(gameMessage, questionAnswerGenerator);
