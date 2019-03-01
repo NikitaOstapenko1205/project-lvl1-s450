@@ -1,35 +1,35 @@
-import gameEngine from '../index';
-import { getRandomInt } from '../utils';
+import gameEngine from '..';
+import getRandomInt from '../utils';
 
 const gameMessage = 'What number is missing in the progression?';
 const progressionLimit = 10;
-const getMissedNumber = (firstNumber, progressionStep, progressionHole) => {
+const getQuestionAndAnswer = (firstNumber, progressionStep, progressionHole) => {
   let question = '';
-  let counter = firstNumber;
-  let result = 0;
+  let answer = 0;
 
   for (let i = 0; i < progressionLimit; i += 1) {
+    const currentNumber = firstNumber + progressionStep * i;
     if (i === progressionHole) {
-      question += (i === 0) ? '..' : ' ..';
-      result = counter;
+      question += ' ..';
+      answer = currentNumber;
     } else {
-      question += (i === 0) ? `${String(counter)}` : ` ${String(counter)}`;
+      question += ` ${String(currentNumber)}`;
     }
-    counter += progressionStep;
   }
 
-  result = String(result);
-  return [question, result];
+  question = question.trim();
+  answer = String(answer);
+  return [question, answer];
 };
 
-const questionAnswerGenerator = () => {
+const questionAndAnswerGenerator = () => {
   const firstNumber = getRandomInt(1, 50);
   const progressionStep = getRandomInt(1, 50);
-  const progressionHole = getRandomInt(0, 9);
-  const [question, result] = getMissedNumber(firstNumber, progressionStep, progressionHole);
-  const questionAnswer = [question, result];
+  const progressionHole = getRandomInt(0, progressionLimit - 1);
+  const [question, answer] = getQuestionAndAnswer(firstNumber, progressionStep, progressionHole);
+  const questionAndAnswer = [question, answer];
 
-  return questionAnswer;
+  return questionAndAnswer;
 };
 
-export default () => gameEngine(gameMessage, questionAnswerGenerator);
+export default () => gameEngine(gameMessage, questionAndAnswerGenerator);

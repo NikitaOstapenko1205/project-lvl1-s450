@@ -1,15 +1,16 @@
-import gameEngine from '../index';
-import { getRandomInt, getRightAnswer } from '../utils';
+import gameEngine from '..';
+import getRandomInt from '../utils';
 
 const gameMessage = 'Answer "yes" if number even otherwise answer "no".';
 const isEven = number => (number % 2 === 0);
+const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
-const questionAnswerGenerator = () => {
+const questionAndAnswerGenerator = () => {
   const question = getRandomInt(0, 100);
-  const result = getRightAnswer(question)(isEven);
-  const questionAnswer = [question, result];
+  const answer = getRightAnswer(question);
+  const questionAndAnswer = [question, answer];
 
-  return questionAnswer;
+  return questionAndAnswer;
 };
 
-export default () => gameEngine(gameMessage, questionAnswerGenerator);
+export default () => gameEngine(gameMessage, questionAndAnswerGenerator);

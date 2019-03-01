@@ -1,5 +1,5 @@
-import gameEngine from '../index';
-import { getRandomInt } from '../utils';
+import gameEngine from '..';
+import getRandomInt from '../utils';
 
 const gameMessage = 'What is the result of the expression?';
 const getMathResult = (number1, number2, operator) => {
@@ -21,15 +21,15 @@ const getRandomOperator = () => {
   return operators[Math.floor(Math.random() * operators.length)];
 };
 
-const questionAnswerGenerator = () => {
-  const number1 = getRandomInt(0, 100);
-  const number2 = getRandomInt(0, 100);
+const questionAndAnswerGenerator = () => {
+  const number1 = getRandomInt(1, 100);
+  const number2 = getRandomInt(1, 100);
   const questionOperator = getRandomOperator();
   const question = `${number1} ${questionOperator} ${number2}`;
-  const result = String(getMathResult(number1, number2, questionOperator));
-  const questionAnswer = [question, result];
+  const answer = String(getMathResult(number1, number2, questionOperator));
+  const questionAndAnswer = [question, answer];
 
-  return questionAnswer;
+  return questionAndAnswer;
 };
 
-export default () => gameEngine(gameMessage, questionAnswerGenerator);
+export default () => gameEngine(gameMessage, questionAndAnswerGenerator);
